@@ -11,6 +11,7 @@ from turtle import back, title
 from PIL import Image,ImageTk
 from datetime import datetime
 from student import Student
+from attendance import Attendance
 from train import Train
 #commenting it coz it has indentation issues
 from face_recognition import Face_Recognition 
@@ -103,10 +104,10 @@ class Face_Recognition_System:
         img6 = img6.resize((220,220))
         self.photoimg6= ImageTk.PhotoImage(img6)
 
-        b1=Button(bg_img,image=self.photoimg6,cursor="hand2")
+        b1=Button(bg_img,image=self.photoimg6,cursor="hand2",command=self.atten_data)
         b1.place(x=800,y=100,width=220,height=220)
 
-        b1_1=Button(bg_img,text="Attendance",cursor="hand2",font=("helvetica", 15,"bold"),bg="Beige",fg="black")
+        b1_1=Button(bg_img,text="Attendance",cursor="hand2",command=self.atten_data,font=("helvetica", 15,"bold"),bg="Beige",fg="black")
         b1_1.place(x=800,y=300,width=220,height=40)
 
 
@@ -187,6 +188,10 @@ class Face_Recognition_System:
     def help_data(self):
         self.new_window=Toplevel(self.root)
         self.app=Help(self.new_window)
+
+    def atten_data(self):
+        self.new_window=Toplevel(self.root)
+        self.app=Attendance(self.new_window)
 
 
        
